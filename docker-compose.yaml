@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
       context: .
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       DB_DSN: "root:@tcp(mysql:3306)/demo_db?charset=utf8mb4&parseTime=True&loc=Local"
       JWT_SECRET: "very-important-please-change-it!"
@@ -16,6 +17,7 @@ services:
       - "3000:3000"
     networks:
       - intranet
+
   mysql:
     image: mysql:8.0.32
     volumes:
@@ -27,5 +29,11 @@ services:
       - "3310:3306"
     networks:
       - intranet
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 networks:
   intranet:

@@ -2,8 +2,6 @@
 
 ## Introduction
 
-> If you're very new to Clean Architecture, I recommend you check [more simple demo](https://github.com/viettranx/simple-clean-architecture-demo).
-
 This repo was built up with three services: **Task**, **User** and **Auth**. Each of them conforms **Clean Architecture**.
 
 ![Clean Architecture Overview](./statics/img/overview-clean-architecture.jpg)
@@ -198,7 +196,3 @@ curl --location 'http://localhost:3000/v1/tasks' \
 }
 ```
 
-## Conclusion
-
-Building services with Clean Architecture is difficult, especially in Microservices.
-I hope this repo help you. Enjoy it and feel free to create PRs or Issues.
